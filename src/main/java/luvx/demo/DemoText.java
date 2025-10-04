@@ -1,7 +1,7 @@
 package luvx.demo;
 
-import luvx.InlineMarkupRendering;
-import luvx.MarkupRenderingBehavior_I;
+import luvx.rendering_behavior.InlineMarkupRendering;
+import luvx.rendering_behavior.MarkupRenderingBehavior_I;
 import luvx.Text_I;
 import luvx.composable.HasTextContent;
 
@@ -21,6 +21,11 @@ public class DemoText implements Text_I<DemoText>, HasTextContent<DemoText> {
     public DemoText self() {
         return this;
     } // Provides interface `this`
+
+    @Override
+    public String text() {
+        return content;
+    }
 
     @Override
     public String textContent() {

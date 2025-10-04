@@ -183,7 +183,7 @@ public class ComprehensiveLuvXDemo {
                         yield switch (e.elementType()) {
                             case ContainerElement_T ce -> {
                                 var container = ce.containerElement(); // NO CASTING! Type preserved
-                                yield "Container[" + container.tagName() + 
+                                yield "Container[" + container.tagName() +
                                       ", children=" + container.childNodes().size() + "]";
                             }
                             case SelfClosingElement_T sce -> {
@@ -197,6 +197,14 @@ public class ComprehensiveLuvXDemo {
                                         yield "PI[" + procInstr.target() + "]";
                                     }
                                 };
+                            }
+                            case RawTextElement_T rt -> {
+                                var rawText = rt.rawTextElement();
+                                yield "RawText[" + rawText.tagName() + "]";
+                            }
+                            case EscapableRawTextElement_T ert -> {
+                                var escapableRawText = ert.escapableRawTextElement();
+                                yield "EscapableRawText[" + escapableRawText.tagName() + "]";
                             }
                         };
                     }
@@ -332,26 +340,26 @@ public class ComprehensiveLuvXDemo {
                         switch (elem.elementType()) {
                             case ContainerElement_T container -> {
                                 var ce = container.containerElement(); // Type: I extends ContainerElement_I<I>
-                                
+
                                 if (ce.hasChildNodes()) {
                                     System.out.println("  Container has " + ce.childNodes().size() + " children:");
-                                    
+
                                     // Even nested processing maintains type safety
                                     for (var child : (List<Node_I>)ce.childNodes()) {
                                         System.out.println("    " + demonstrateZeroCastDiscrimination(child));
                                     }
                                 }
-                                
+
                                 // Additional capabilities if present
                                 if (ce instanceof Timestamped<?> ts) {
                                     System.out.println("  Created at: " + ts.getTimestamp());
                                 }
                             }
-                            
+
                             case SelfClosingElement_T selfClosing -> {
                                 var sce = selfClosing.selfClosingElement(); // Type: I extends SelfClosingElement_I<I>
                                 System.out.println("  Self-closing: " + sce.tagName());
-                                
+
                                 switch (selfClosing.selfClosingElementType()) {
                                     case VoidElement_T voidElem -> {
                                         var ve = voidElem.voidElement(); // Type: I extends VoidElement_I<I>
@@ -362,6 +370,16 @@ public class ComprehensiveLuvXDemo {
                                         System.out.println("    Processing instruction target: " + pi.target());
                                     }
                                 }
+                            }
+
+                            case RawTextElement_T rt -> {
+                                var rawText = rt.rawTextElement();
+                                System.out.println("  Raw text element: " + rawText.tagName());
+                            }
+
+                            case EscapableRawTextElement_T ert -> {
+                                var escapableRawText = ert.escapableRawTextElement();
+                                System.out.println("  Escapable raw text element: " + escapableRawText.tagName());
                             }
                         }
                     }

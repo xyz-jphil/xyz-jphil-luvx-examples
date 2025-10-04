@@ -5,8 +5,8 @@ import luvx.ContainerElement_I;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
-import luvx.BlockMarkupRendering;
-import luvx.MarkupRenderingBehavior_I;
+import luvx.rendering_behavior.BlockMarkupRendering;
+import luvx.rendering_behavior.MarkupRenderingBehavior_I;
 
 /**
  * Container element implementation - composable design using interfaces

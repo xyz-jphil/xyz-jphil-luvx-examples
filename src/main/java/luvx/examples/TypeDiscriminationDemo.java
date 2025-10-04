@@ -37,6 +37,8 @@ public class TypeDiscriminationDemo {
                         case ProcessingInstruction_T pi -> "ProcessingInstruction";
                     };
                     case ContainerElement_T ce -> "ContainerElement";
+                    case RawTextElement_T rt -> "RawTextElement";
+                    case EscapableRawTextElement_T ert -> "EscapableRawTextElement";
                 };
             };
         };
@@ -68,11 +70,17 @@ public class TypeDiscriminationDemo {
                         switch (e.elementType()) {
                             case ContainerElement_T ce -> {
                                 var containerElem = ce.containerElement();
-                                System.out.println("Container has " + 
+                                System.out.println("Container has " +
                                     containerElem.childNodes().size() + " children");
                             }
                             case SelfClosingElement_T sce -> {
                                 System.out.println("Self-closing element (no children)");
+                            }
+                            case RawTextElement_T rt -> {
+                                System.out.println("Raw text element (script/style): " + rt.rawTextElement().tagName());
+                            }
+                            case EscapableRawTextElement_T ert -> {
+                                System.out.println("Escapable raw text element (textarea/title): " + ert.escapableRawTextElement().tagName());
                             }
                         }
                     }

@@ -3,8 +3,8 @@ package luvx.examples.dsl;
 import luvx.composable.*;
 import luvx.Text_I;
 import java.util.List;
-import luvx.InlineMarkupRendering;
-import luvx.MarkupRenderingBehavior_I;
+import luvx.rendering_behavior.InlineMarkupRendering;
+import luvx.rendering_behavior.MarkupRenderingBehavior_I;
 
 /**
  * Pure text content - implements Text_I directly, no attributes
@@ -15,6 +15,7 @@ public class DslText implements DslFrag_I, Text_I<DslText>, HasTextContent<DslTe
     public DslText(String content) { this.content = content; }
     
     @Override public DslText self() { return this; }
+    @Override public String text() { return content; }
     @Override public String textContent() { return content; }
     @Override public String toString() { return content; }
     

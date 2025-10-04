@@ -1,7 +1,7 @@
 package luvx.demo;
 
 import luvx.Comment_I;
-import luvx.InlineMarkupRendering;
+import luvx.rendering_behavior.InlineMarkupRendering;
 import luvx.composable.HasTextContent;
 
 /**

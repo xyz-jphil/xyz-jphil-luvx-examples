@@ -2,9 +2,9 @@ package luvx.demo;
 
 import java.util.List;
 import java.util.Map;
-import luvx.BlockMarkupRendering;
+import luvx.rendering_behavior.BlockMarkupRendering;
 import luvx.ContainerElement_I;
-import luvx.MarkupRenderingBehavior_I;
+import luvx.rendering_behavior.MarkupRenderingBehavior_I;
 import luvx.Node_I;
 
 /**

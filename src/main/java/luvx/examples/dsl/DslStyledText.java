@@ -5,8 +5,8 @@ import luvx.VoidElement_I;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
-import luvx.InlineMarkupRendering;
-import luvx.MarkupRenderingBehavior_I;
+import luvx.rendering_behavior.InlineMarkupRendering;
+import luvx.rendering_behavior.MarkupRenderingBehavior_I;
 
 /**
  * Styled text element - like HTML span with style attribute
